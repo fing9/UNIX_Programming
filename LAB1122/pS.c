@@ -1,0 +1,48 @@
+#include<fcntl.h>
+#include<unistd.h>
+#include<stdio.h>
+#include<string.h>
+#include<dirent.h>
+#include<ftw.h>
+#include<time.h>
+#include<signal.h>
+#include<stdlib.h>
+#include<sys/types.h>
+#include<sys/wait.h>
+#include<sys/stat.h>
+#include<sys/mman.h>
+#include<sys/ipc.h>
+#include<sys/msg.h>
+#include<sys/sem.h>
+#include<sys/shm.h>
+
+
+struct q_entry{
+	long mtype;
+	int data;
+};
+
+int main(void) {
+	int i, qid;
+	key_t key;
+	struct q_entry msg;
+	
+	mkdir("key20003201", 0644);
+	key=ftok("key20003201", 122);
+	qid=msgget(key, IPC_CREAT|0600);
+
+	if(qid == -1){
+		printf("error");
+		exit(0);
+	}
+	
+	for(i=0;i<15;i++) {
+		msgrcv(qid, &msg, sizeof(int), 0, 0);
+		msg.mtype += 8;
+		msg.data += 8;
+		msgsnd(qid, &msg, sizeof(int), msg.mtype);
+	}
+	
+	return 0;
+}
+

@@ -1,0 +1,18 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+
+int main() {
+	int fd, i, p;
+	char ch = 'K';
+
+	fd=open("test1", O_WRONLY|O_TRUNC, 0600);
+
+	for(i=0;i<3;i++) {
+		write(fd, &ch, sizeof(char));
+	}
+
+	return 0;
+}

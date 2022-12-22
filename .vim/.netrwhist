@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/account/class/tspark/s20003201/LAB-TEST'
+let g:netrw_dirhist_2='/home/account/class/tspark/s20003201/LAB1115'
+let g:netrw_dirhist_3='/home/account/class/tspark/s20003201/LAB1117'
+let g:netrw_dirhist_4='/home/account/class/tspark/s20003201/LAB1208'
+let g:netrw_dirhist_5='/home/account/class/tspark/s20003201/LAB1124'
