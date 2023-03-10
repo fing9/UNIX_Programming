@@ -114,7 +114,7 @@ void vi_m(char **res){
 }
 
 int main(void){               
-        char in[100], *res[20]={0};
+        char in[512], *res[20]={0};
         char *inst[6]={"cat", "cd", "cp", "ls", "mkdir", "vi"};
         void (*f[6])(char **)={cat_m, cd_m, cp_m, ls_m, mkdir_m, vi_m};
         int i;
@@ -122,7 +122,8 @@ int main(void){
         while (1){
 
 		// current working directory 이름 출력 (미작성 시 –2점 감점)
-		getcwd(in, 100);
+		getcwd(in, 512);
+		i = 0;
 		while(in[i]) {
 			i++;
 		}

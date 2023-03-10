@@ -17,13 +17,14 @@
 #include<sys/shm.h>
 
 int main(void) {
-	char name[100], in[50], *res[20] = {0};
+	char name[512], in[50], *res[20] = {0};
 	int i, status;
 	pid_t pid[2];
 	int n, run = 0;
 
 	while(1) {
-		getcwd(name, 100);
+		getcwd(name, 512);
+		i = 0;
 		while(name[i]) {
 			i++;
 		}
